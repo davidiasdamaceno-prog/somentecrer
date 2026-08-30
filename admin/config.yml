@@ -10,86 +10,160 @@ public_folder: "/images/uploads"
 
 collections:
 
-  # --- Avisos da igreja (o banner rotativo do topo, ex: "Santa Ceia") ---
-  - name: "avisos"
-    label: "Avisos da Igreja"
-    folder: "content/avisos"
-    create: true
-    delete: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Título do Aviso", name: "title", widget: "string" }
-      - { label: "Data", name: "date", widget: "string", hint: "Ex: 6 de setembro" }
-
-  # --- Vídeo/transmissão ao vivo ---
-  - name: "ao_vivo"
-    label: "Ao Vivo (YouTube)"
+  # --- Coisas compartilhadas entre Uberlândia e Araguari ---
+  - name: "comum"
+    label: "Informações Compartilhadas"
     files:
-      - label: "Configuração do Ao Vivo"
-        name: "ao_vivo"
-        file: "content/ao_vivo.json"
+      - label: "Ao Vivo (YouTube)"
+        name: "transmissao"
+        file: "content/comum.json"
         fields:
-          - { label: "Link do vídeo Ao Vivo (YouTube)", name: "video_url", widget: "string", hint: "Cole o link do vídeo do YouTube" }
-          - { label: "Link da Playlist de Cultos", name: "playlist_url", widget: "string", required: false }
+          - label: "Transmissão"
+            name: "transmissao"
+            widget: "object"
+            fields:
+              - { label: "ID do vídeo do YouTube", name: "youtubeVideoId", widget: "string", hint: "Só o código, ex: vkiA1MkI2iA (da URL youtube.com/watch?v=CÓDIGO)" }
+              - { label: "Minutos antes do culto que entra Ao Vivo", name: "abreAntesMin", widget: "number" }
+              - { label: "Duração considerada do culto (minutos)", name: "duracaoMin", widget: "number" }
+          - label: "Links"
+            name: "links"
+            widget: "object"
+            fields:
+              - { label: "Canal do YouTube", name: "canalYoutube", widget: "string" }
+              - { label: "Playlist de Encontros", name: "playlistEncontros", widget: "string" }
+          - label: "Rádio"
+            name: "radio"
+            widget: "object"
+            fields:
+              - { label: "Nome do programa", name: "programa", widget: "string" }
+              - { label: "Frequência", name: "frequencia", widget: "string" }
+              - { label: "Grade de horários", name: "grade", widget: "string" }
+          - label: "Encontro de Pastores"
+            name: "encontroPastores"
+            widget: "object"
+            fields:
+              - { label: "Ano", name: "ano", widget: "string" }
+              - { label: "Data", name: "data", widget: "string" }
+              - { label: "Abrangência", name: "abrangencia", widget: "string" }
+          - label: "Dízimos e Ofertas"
+            name: "contribuicao"
+            widget: "object"
+            fields:
+              - { label: "Titular", name: "titular", widget: "string" }
+              - { label: "Rótulo do Pix", name: "pixRotulo", widget: "string" }
+              - { label: "Chave Pix", name: "pixChave", widget: "string" }
+              - { label: "Banco / Agência", name: "banco", widget: "string" }
+              - { label: "Conta", name: "conta", widget: "string" }
 
-  # --- Horários dos cultos ---
-  - name: "horarios"
-    label: "Horários dos Cultos"
+  # --- Uberlândia ---
+  - name: "dados_uberlandia"
+    label: "Uberlândia"
     files:
-      - label: "Lista de Horários"
-        name: "horarios"
-        file: "content/horarios.json"
+      - label: "Dados de Uberlândia"
+        name: "dados"
+        file: "content/uberlandia/dados.json"
         fields:
-          - label: "Horários"
-            name: "horarios"
+          - label: "Aviso da Igreja"
+            name: "aviso"
+            widget: "object"
+            fields:
+              - { label: "Etiqueta", name: "etiqueta", widget: "string" }
+              - { label: "Título do aviso", name: "titulo", widget: "string" }
+              - label: "Tipo"
+                name: "tipo"
+                widget: "select"
+                options: ["santaCeia", "fixo"]
+                hint: "\"santaCeia\" calcula a data automaticamente (próximo 1º domingo do mês). \"fixo\" usa a data que você escrever abaixo."
+              - { label: "Data (só se o tipo for \"fixo\")", name: "data", widget: "string", required: false }
+          - label: "Horários dos Cultos"
+            name: "cultos"
             widget: "list"
             fields:
-              - { label: "Dia", name: "dia", widget: "string" }
-              - { label: "Horário", name: "hora", widget: "string" }
+              - label: "Dia da semana"
+                name: "d"
+                widget: "select"
+                options: [{label: "Domingo", value: 0}, {label: "Segunda", value: 1}, {label: "Terça", value: 2}, {label: "Quarta", value: 3}, {label: "Quinta", value: 4}, {label: "Sexta", value: 5}, {label: "Sábado", value: 6}]
+              - { label: "Hora", name: "h", widget: "number", min: 0, max: 23 }
+              - { label: "Minuto", name: "min", widget: "number", min: 0, max: 59 }
+              - { label: "Rótulo (texto exibido)", name: "rotulo", widget: "string" }
+              - label: "Grupo"
+                name: "grupo"
+                widget: "select"
+                options: ["semana", "domingo"]
+          - label: "Endereço"
+            name: "endereco"
+            widget: "object"
+            fields:
+              - { label: "Rua e número", name: "rua", widget: "string" }
+              - { label: "Bairro", name: "bairro", widget: "string" }
+              - { label: "Cidade", name: "cidade", widget: "string" }
+              - { label: "UF", name: "uf", widget: "string" }
+              - { label: "CEP (opcional)", name: "cep", widget: "string", required: false }
+          - label: "Contato"
+            name: "contato"
+            widget: "object"
+            fields:
+              - { label: "Telefone", name: "telefone", widget: "string" }
+              - { label: "E-mail", name: "email", widget: "string" }
+          - label: "Links específicos de Uberlândia"
+            name: "links"
+            widget: "object"
+            fields:
+              - { label: "Playlist Saudosa Lembrança", name: "playlistSaudosa", widget: "string" }
 
-  # --- Contato ---
-  - name: "contato"
-    label: "Contato"
+  # --- Araguari ---
+  - name: "dados_araguari"
+    label: "Araguari"
     files:
-      - label: "Informações de Contato"
-        name: "contato"
-        file: "content/contato.json"
+      - label: "Dados de Araguari"
+        name: "dados"
+        file: "content/araguari/dados.json"
         fields:
-          - { label: "Telefone", name: "telefone", widget: "string" }
-          - { label: "E-mail", name: "email", widget: "string" }
-
-  # --- Endereço / Como Chegar ---
-  - name: "endereco"
-    label: "Endereço / Como Chegar"
-    files:
-      - label: "Endereço"
-        name: "endereco"
-        file: "content/endereco.json"
-        fields:
-          - { label: "Endereço completo", name: "endereco", widget: "string" }
-          - { label: "Link do Google Maps", name: "maps_url", widget: "string", required: false }
-
-  # --- Encontro de Pastores ---
-  - name: "encontro_pastores"
-    label: "Encontro de Pastores"
-    files:
-      - label: "Encontro de Pastores"
-        name: "encontro_pastores"
-        file: "content/encontro_pastores.json"
-        fields:
-          - { label: "Título", name: "titulo", widget: "string" }
-          - { label: "Ano", name: "ano", widget: "string" }
-          - { label: "Datas do Encontro", name: "datas", widget: "string", hint: "Ex: 15 a 20 de Dezembro" }
-          - { label: "Descrição curta", name: "descricao", widget: "string", required: false }
-          - { label: "Banner / Imagem", name: "banner", widget: "image" }
-
-  # --- Galeria de fotos (adicionar/remover livremente) ---
-  - name: "fotos"
-    label: "Galeria de Fotos"
-    folder: "content/fotos"
-    create: true
-    delete: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Foto", name: "imagem", widget: "image" }
-      - { label: "Legenda (opcional)", name: "legenda", widget: "string", required: false }
+          - label: "Aviso da Igreja"
+            name: "aviso"
+            widget: "object"
+            fields:
+              - { label: "Etiqueta", name: "etiqueta", widget: "string" }
+              - { label: "Título do aviso", name: "titulo", widget: "string" }
+              - label: "Tipo"
+                name: "tipo"
+                widget: "select"
+                options: ["santaCeia", "fixo"]
+                hint: "\"santaCeia\" calcula a data automaticamente (próximo 1º domingo do mês). \"fixo\" usa a data que você escrever abaixo."
+              - { label: "Data (só se o tipo for \"fixo\")", name: "data", widget: "string", required: false }
+          - label: "Horários dos Cultos"
+            name: "cultos"
+            widget: "list"
+            fields:
+              - label: "Dia da semana"
+                name: "d"
+                widget: "select"
+                options: [{label: "Domingo", value: 0}, {label: "Segunda", value: 1}, {label: "Terça", value: 2}, {label: "Quarta", value: 3}, {label: "Quinta", value: 4}, {label: "Sexta", value: 5}, {label: "Sábado", value: 6}]
+              - { label: "Hora", name: "h", widget: "number", min: 0, max: 23 }
+              - { label: "Minuto", name: "min", widget: "number", min: 0, max: 59 }
+              - { label: "Rótulo (texto exibido)", name: "rotulo", widget: "string" }
+              - label: "Grupo"
+                name: "grupo"
+                widget: "select"
+                options: ["semana", "domingo"]
+          - label: "Endereço"
+            name: "endereco"
+            widget: "object"
+            fields:
+              - { label: "Rua e número", name: "rua", widget: "string" }
+              - { label: "Bairro", name: "bairro", widget: "string" }
+              - { label: "Cidade", name: "cidade", widget: "string" }
+              - { label: "UF", name: "uf", widget: "string" }
+              - { label: "CEP (opcional)", name: "cep", widget: "string", required: false }
+          - label: "Contato"
+            name: "contato"
+            widget: "object"
+            fields:
+              - { label: "Telefone", name: "telefone", widget: "string" }
+              - { label: "E-mail", name: "email", widget: "string" }
+          - label: "Galeria de Fotos do Templo"
+            name: "galeria"
+            widget: "list"
+            fields:
+              - { label: "Foto", name: "src", widget: "image" }
+              - { label: "Descrição (opcional)", name: "alt", widget: "string", required: false }
