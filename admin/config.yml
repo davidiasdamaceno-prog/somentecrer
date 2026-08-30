@@ -9,40 +9,87 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 collections:
-  - name: "geral"
-    label: "Informações Gerais"
+
+  # --- Avisos da igreja (o banner rotativo do topo, ex: "Santa Ceia") ---
+  - name: "avisos"
+    label: "Avisos da Igreja"
+    folder: "content/avisos"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Título do Aviso", name: "title", widget: "string" }
+      - { label: "Data", name: "date", widget: "string", hint: "Ex: 6 de setembro" }
+
+  # --- Vídeo/transmissão ao vivo ---
+  - name: "ao_vivo"
+    label: "Ao Vivo (YouTube)"
     files:
-      - label: "Página Inicial"
-        name: "home"
-        file: "content/home.json"
+      - label: "Configuração do Ao Vivo"
+        name: "ao_vivo"
+        file: "content/ao_vivo.json"
         fields:
-          - { label: "Versículo do Dia", name: "versiculo", widget: "text" }
-          - { label: "Referência do Versículo", name: "referencia", widget: "string" }
-          - label: "Horários de Culto"
+          - { label: "Link do vídeo Ao Vivo (YouTube)", name: "video_url", widget: "string", hint: "Cole o link do vídeo do YouTube" }
+          - { label: "Link da Playlist de Cultos", name: "playlist_url", widget: "string", required: false }
+
+  # --- Horários dos cultos ---
+  - name: "horarios"
+    label: "Horários dos Cultos"
+    files:
+      - label: "Lista de Horários"
+        name: "horarios"
+        file: "content/horarios.json"
+        fields:
+          - label: "Horários"
             name: "horarios"
             widget: "list"
             fields:
               - { label: "Dia", name: "dia", widget: "string" }
               - { label: "Horário", name: "hora", widget: "string" }
 
-  - name: "avisos"
-    label: "Avisos"
-    folder: "content/avisos"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Título", name: "title", widget: "string" }
-      - { label: "Data", name: "date", widget: "datetime" }
-      - { label: "Texto", name: "body", widget: "markdown" }
-      - { label: "Imagem (opcional)", name: "imagem", widget: "image", required: false }
+  # --- Contato ---
+  - name: "contato"
+    label: "Contato"
+    files:
+      - label: "Informações de Contato"
+        name: "contato"
+        file: "content/contato.json"
+        fields:
+          - { label: "Telefone", name: "telefone", widget: "string" }
+          - { label: "E-mail", name: "email", widget: "string" }
 
-  - name: "eventos"
-    label: "Eventos"
-    folder: "content/eventos"
+  # --- Endereço / Como Chegar ---
+  - name: "endereco"
+    label: "Endereço / Como Chegar"
+    files:
+      - label: "Endereço"
+        name: "endereco"
+        file: "content/endereco.json"
+        fields:
+          - { label: "Endereço completo", name: "endereco", widget: "string" }
+          - { label: "Link do Google Maps", name: "maps_url", widget: "string", required: false }
+
+  # --- Encontro de Pastores ---
+  - name: "encontro_pastores"
+    label: "Encontro de Pastores"
+    files:
+      - label: "Encontro de Pastores"
+        name: "encontro_pastores"
+        file: "content/encontro_pastores.json"
+        fields:
+          - { label: "Título", name: "titulo", widget: "string" }
+          - { label: "Ano", name: "ano", widget: "string" }
+          - { label: "Datas do Encontro", name: "datas", widget: "string", hint: "Ex: 15 a 20 de Dezembro" }
+          - { label: "Descrição curta", name: "descricao", widget: "string", required: false }
+          - { label: "Banner / Imagem", name: "banner", widget: "image" }
+
+  # --- Galeria de fotos (adicionar/remover livremente) ---
+  - name: "fotos"
+    label: "Galeria de Fotos"
+    folder: "content/fotos"
     create: true
+    delete: true
     slug: "{{slug}}"
     fields:
-      - { label: "Nome do Evento", name: "title", widget: "string" }
-      - { label: "Data do Evento", name: "date", widget: "datetime" }
-      - { label: "Local", name: "local", widget: "string" }
-      - { label: "Descrição", name: "descricao", widget: "text" }
+      - { label: "Foto", name: "imagem", widget: "image" }
+      - { label: "Legenda (opcional)", name: "legenda", widget: "string", required: false }
