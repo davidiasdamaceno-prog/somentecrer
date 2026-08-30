@@ -5,10 +5,10 @@
 
 backend:
   name: github
-  repo: <<seu-usuario>>/<<nome-do-repositorio>>   # ex: mgabriel/somentecrer-site
+  repo: davidiasdamaceno-prog/somentecrer
   branch: main
-  base_url: <<url-do-servico-oauth>>   # preenchido depois de configurar a autenticação
-  auth_endpoint: auth
+  base_url: https://decap-oauth-provider.vercel.app
+  auth_endpoint: api/auth
 
 # Onde ficam as imagens enviadas pelo painel
 media_folder: "images/uploads"
