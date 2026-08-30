@@ -1,0 +1,38 @@
+{
+  "igreja": {
+    "razaoSocial": "Igreja Evangélica Tabernáculo Cristão",
+    "cidade": "Uberlândia",
+    "cidadeUF": "UBERLÂNDIA · MG"
+  },
+  "endereco": {
+    "rua": "Rua Sebastiana Arantes Fonseca, 404",
+    "bairro": "Santa Mônica",
+    "cidade": "Uberlândia",
+    "uf": "MG"
+  },
+  "contato": {
+    "telefone": "(34) 3215-7461",
+    "email": "igreja@somentecrer.org.br"
+  },
+  "aviso": {
+    "etiqueta": "Avisos da Igreja",
+    "titulo": "Santa Ceia",
+    "tipo": "santaCeia",
+    "data": ""
+  },
+  "cultos": [
+    { "d": 1, "h": 19, "min": 0, "rotulo": "Segunda-feira", "grupo": "semana" },
+    { "d": 5, "h": 19, "min": 20, "rotulo": "Sexta-feira", "grupo": "semana" },
+    { "d": 0, "h": 7, "min": 40, "rotulo": "Escola das crianças", "grupo": "domingo" },
+    { "d": 0, "h": 9, "min": 0, "rotulo": "Escola dominical", "grupo": "domingo" },
+    { "d": 0, "h": 16, "min": 40, "rotulo": "Culto dos jovens", "grupo": "domingo" },
+    { "d": 0, "h": 18, "min": 30, "rotulo": "Culto da noite", "grupo": "domingo" }
+  ],
+  "links": {
+    "playlistSaudosa": "https://youtube.com/@tabernaculodafeuberlandia"
+  },
+  "igrejaIrma": {
+    "rotulo": "Mudar para Araguari",
+    "url": "araguari.html"
+  }
+}

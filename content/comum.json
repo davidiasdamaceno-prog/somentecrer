@@ -1,0 +1,28 @@
+{
+  "transmissao": {
+    "youtubeVideoId": "vkiA1MkI2iA",
+    "abreAntesMin": 15,
+    "duracaoMin": 105
+  },
+  "links": {
+    "canalYoutube": "https://youtube.com/@tabernaculodafeuberlandia",
+    "playlistEncontros": "https://www.youtube.com/playlist?list=PLIJ_ZGIn_IaHgywBQar9wdVLK8xY-A_j8"
+  },
+  "radio": {
+    "programa": "Fé Para Vencer",
+    "frequencia": "FM 104.9",
+    "grade": "Segunda a sexta, 13h e 18h."
+  },
+  "encontroPastores": {
+    "ano": "2026",
+    "data": "15 a 20 de Dezembro",
+    "abrangencia": "Encontro nacional"
+  },
+  "contribuicao": {
+    "titular": "Igreja Evangélica Tabernáculo Cristão",
+    "pixRotulo": "Pix (CNPJ)",
+    "pixChave": "22.224.729/0001-84",
+    "banco": "Itaú Agência 1611",
+    "conta": "C/C 98043-2"
+  }
+}

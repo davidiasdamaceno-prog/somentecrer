@@ -1,0 +1,43 @@
+{
+  "igreja": {
+    "razaoSocial": "Igreja Evangélica Tabernáculo Cristão",
+    "cidade": "Araguari",
+    "cidadeUF": "ARAGUARI · MG"
+  },
+  "endereco": {
+    "rua": "R. São Salvador, 505-B",
+    "bairro": "Amorim",
+    "cidade": "Araguari",
+    "uf": "MG",
+    "cep": "38446-130"
+  },
+  "contato": {
+    "telefone": "(34) 3215-7461",
+    "email": "araguari@somentecrer.org.br"
+  },
+  "aviso": {
+    "etiqueta": "Avisos da Igreja",
+    "titulo": "Santa Ceia",
+    "tipo": "santaCeia",
+    "data": ""
+  },
+  "cultos": [
+    { "d": 1, "h": 18, "min": 30, "rotulo": "Segunda-feira", "grupo": "semana" },
+    { "d": 3, "h": 18, "min": 30, "rotulo": "Quarta-feira", "grupo": "semana" },
+    { "d": 6, "h": 18, "min": 0, "rotulo": "Sábado", "grupo": "semana" },
+    { "d": 0, "h": 8, "min": 0, "rotulo": "Escola das crianças", "grupo": "domingo" },
+    { "d": 0, "h": 9, "min": 0, "rotulo": "Escola dominical", "grupo": "domingo" },
+    { "d": 0, "h": 16, "min": 40, "rotulo": "Culto dos jovens", "grupo": "domingo" }
+  ],
+  "galeria": [
+    { "src": "img/araguari-web-1.jpg", "alt": "Templo de Araguari - foto 1" },
+    { "src": "img/araguari-web-2.jpg", "alt": "Templo de Araguari - foto 2" },
+    { "src": "img/araguari-web-3.jpg", "alt": "Templo de Araguari - foto 3" },
+    { "src": "img/araguari-web-4.jpg", "alt": "Templo de Araguari - foto 4" },
+    { "src": "img/araguari-web-5.jpg", "alt": "Templo de Araguari - foto 5" }
+  ],
+  "igrejaIrma": {
+    "rotulo": "Mudar para Uberlândia",
+    "url": "index.html"
+  }
+}

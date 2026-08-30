@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+:root {
+  --azul-tinta: #0F3D56;
+  --azul-acao: #136E9C;
+  --azul-acao-escuro: #0F5A81;
+  --azul-claro: #5FB3DE;
+  --azul-gelo: #EAF4FA;
+  --branco: #FFFFFF;
+  --amarelo-suave: #FDF3D6;
+  --amarelo-destaque: #F7DC85;
+  --vermelho-vivo: #E23B2E;
+  --fundo-player: #0B2C3E;
+  --borda-card: rgba(19,110,156,.14);
+  --borda-input: rgba(19,110,156,.35);
+  --texto-secundario: rgba(15,61,86,.85);
+  --texto-secundario-claro: rgba(255,255,255,.85);
+  --selo-fora-do-ar: rgba(255,255,255,.14);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: var(--amarelo-suave);
+  color: var(--azul-tinta);
+}
+
+section, header { scroll-margin-top: 106px; }
+
+.wrap {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ===== Cabeçalho ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--branco);
+  border-bottom: 1px solid var(--borda-card);
+  box-shadow: 0 2px 14px rgba(15,61,86,.07);
+}
+header .wrap {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+.logo img { width: 48px; height: auto; display: block; }
+.logo-texto { display: flex; flex-direction: column; gap: 2px; line-height: 1.05; }
+.logo-nome { font: 700 24px 'Outfit'; letter-spacing: -.03em; color: var(--azul-tinta); }
+.logo-cidade { font: 600 10px 'Outfit'; letter-spacing: .22em; text-transform: uppercase; color: var(--texto-secundario); }
+
+nav.menu {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;
+  overflow-x: auto;
+}
+nav.menu a {
+  font: 600 15px 'Outfit';
+  color: var(--azul-tinta);
+  text-decoration: none;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 2px;
+}
+nav.menu a span.underline { height: 2px; border-radius: 2px; background: transparent; }
+nav.menu a.ativo span.underline { background: var(--azul-acao); }
+
+.btn-troca-cidade {
+  background: var(--azul-acao);
+  color: var(--branco);
+  border-radius: 6px;
+  padding: 9px 16px;
+  font: 700 14px 'Outfit';
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background .15s;
+}
+.btn-troca-cidade:hover { background: var(--azul-acao-escuro); }
+
+/* ===== Hero ===== */
+#topo {
+  background: var(--azul-tinta);
+  color: var(--branco);
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 36px;
+  align-items: center;
+  padding: 32px 0;
+  min-width: 0;
+}
+.hero-carrossel { overflow: hidden; min-width: 0; }
+.hero-pista {
+  display: flex;
+  width: 200%;
+  transition: transform .7s cubic-bezier(.45,.05,.2,1);
+  cursor: grab;
+}
+.hero-painel { width: 50%; flex: none; padding-right: 28px; }
+
+.hero-play {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--azul-acao);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--branco); font-size: 20px; cursor: pointer;
+  transition: background .15s; margin-bottom: 20px;
+}
+.hero-play:hover { background: var(--vermelho-vivo); }
+
+.hero-titulo { font: 700 58px/1 'Outfit'; letter-spacing: -.045em; margin-bottom: 14px; }
+.hero-sub { font: 500 16px/1.6 'Outfit'; color: var(--texto-secundario-claro); margin-bottom: 20px; }
+
+.selo {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; border-radius: 999px;
+  font: 700 13px 'Outfit'; letter-spacing: .06em;
+}
+.selo-ao-vivo { background: var(--vermelho-vivo); color: var(--branco); }
+.selo-fora-do-ar { background: var(--selo-fora-do-ar); color: var(--branco); }
+.selo-ponto { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+.selo-ao-vivo .selo-ponto { animation: pulseLive 1.6s infinite; }
+@keyframes pulseLive { 0%,100% { opacity: 1; } 50% { opacity: .35; } }
+
+.aviso-etiqueta {
+  display: inline-block;
+  background: var(--amarelo-destaque);
+  color: var(--azul-tinta);
+  font: 700 13px 'Outfit'; letter-spacing: .14em; text-transform: uppercase;
+  padding: 8px 16px; border-radius: 999px; margin-bottom: 20px;
+}
+.aviso-titulo { font: 700 52px/1 'Outfit'; letter-spacing: -.05em; margin-bottom: 12px; }
+.aviso-data { font: 500 16px 'Outfit'; color: var(--texto-secundario-claro); }
+
+.hero-dots { display: flex; gap: 8px; margin-top: 20px; }
+.hero-dots button {
+  width: 34px; height: 5px; border-radius: 999px; border: none; cursor: pointer;
+  background: rgba(255,255,255,.3);
+}
+.hero-dots button.ativo { background: var(--azul-claro); }
+
+.hero-video { position: relative; border-radius: 10px; overflow: hidden; background: var(--fundo-player); }
+.hero-video iframe { width: 100%; height: 330px; display: block; border: 0; }
+
+/* ===== Cards ===== */
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 32px 0;
+}
+.card {
+  background: var(--branco);
+  border: 1px solid var(--borda-card);
+  border-radius: 10px;
+  padding: 24px;
+  display: flex; flex-direction: column;
+}
+.card-radio { align-items: center; text-align: center; justify-content: center; gap: 8px; }
+.radio-play {
+  width: 64px; height: 64px; border-radius: 50%;
+  border: 3px solid var(--azul-acao);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--azul-acao); font-size: 22px; margin-bottom: 4px;
+}
+.card-titulo { font: 700 20px 'Outfit'; letter-spacing: -.03em; }
+.card-encontro { padding: 0; overflow: hidden; }
+.card-encontro img { width: 100%; height: 200px; object-fit: cover; display: block; }
+.card-encontro-texto { padding: 18px 24px; text-align: center; }
+.card-encontro-texto a { color: var(--azul-acao); text-decoration: none; font: 700 15px 'Outfit'; }
+.card-pastores { gap: 8px; }
+.card-pastores .rotulo { font: 700 13px 'Outfit'; letter-spacing: .1em; text-transform: uppercase; color: var(--texto-secundario); }
+.card-pastores .ano { font: 700 30px 'Outfit'; letter-spacing: .16em; color: var(--azul-tinta); }
+.card-pastores .bloco-azul { background: var(--azul-tinta); color: var(--branco); border-radius: 8px; padding: 16px; margin-top: 8px; }
+.card-pastores .bloco-azul .proximo { font: 500 14px 'Outfit'; color: rgba(255,255,255,.85); margin-bottom: 4px; }
+.card-pastores .bloco-azul .data { font: 700 22px 'Outfit'; letter-spacing: -.03em; margin-bottom: 4px; }
+.card-pastores .bloco-azul .abrangencia { font: 500 14px 'Outfit'; color: rgba(255,255,255,.85); }
+.card-pastores .rodape { font: 500 14px 'Outfit'; color: var(--texto-secundario); margin-top: 4px; }
+
+/* ===== Horários + Como chegar ===== */
+.duas-colunas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding-bottom: 32px;
+}
+.duas-colunas .card { height: 100%; }
+.horarios-titulo, .contato-titulo { font: 700 22px 'Outfit'; letter-spacing: -.03em; margin-bottom: 18px; }
+.culto-linha { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--borda-card); }
+.culto-linha:last-child { border-bottom: none; }
+.culto-rotulo { font: 600 17px 'Outfit'; color: var(--azul-acao); }
+.culto-hora { font: 700 19px 'Outfit'; letter-spacing: -.01em; color: var(--azul-tinta); }
+.subtitulo-domingo { font: 700 18px 'Outfit'; margin: 16px 0 8px; color: var(--azul-tinta); }
+
+.card-contato { display: flex; flex-direction: column; gap: 16px; }
+.card-contato iframe { width: 100%; flex: 1; min-height: 210px; border: 0; border-radius: 8px; }
+.bloco-info div:first-child { font: 700 15px 'Outfit'; margin-bottom: 4px; }
+.linha-dado { display: flex; justify-content: space-between; align-items: baseline; padding: 4px 0; }
+.linha-dado span:first-child { font: 500 15px 'Outfit'; color: var(--texto-secundario); }
+.linha-dado span:last-child { font: 600 15px 'Outfit'; }
+
+/* ===== Galeria (Araguari) ===== */
+.galeria { position: relative; border-radius: 10px; overflow: hidden; background: var(--azul-tinta); aspect-ratio: 16/9; }
+.galeria img { width: 100%; height: 100%; object-fit: contain; position: absolute; inset: 0; opacity: 0; transition: opacity .8s; }
+.galeria img.ativa { opacity: 1; }
+.galeria-dots { position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; }
+.galeria-dots button { width: 26px; height: 5px; border-radius: 999px; border: none; background: rgba(255,255,255,.4); cursor: pointer; }
+.galeria-dots button.ativa { background: var(--branco); }
+
+/* ===== Rodapé ===== */
+footer { background: var(--branco); text-align: center; padding: 32px 0; }
+footer .copyright { font: 500 14px 'Outfit'; color: var(--texto-secundario); margin-bottom: 6px; }
+footer .linha-endereco { font: 500 15px 'Outfit'; color: var(--texto-secundario); margin-bottom: 16px; }
+.rodape-botoes { display: flex; gap: 12px; justify-content: center; }
+.rodape-botoes a {
+  background: var(--azul-gelo);
+  border: 1px solid rgba(19,110,156,.25);
+  color: var(--azul-acao);
+  border-radius: 6px;
+  padding: 9px 22px;
+  font: 700 14px 'Outfit';
+  text-decoration: none;
+}
+
+/* ===== Genéricos de seção ===== */
+.secao { padding: 32px 0; }
+.secao-titulo { font: 700 26px 'Outfit'; letter-spacing: -.035em; margin-bottom: 20px; }
+
+@media (max-width: 1100px) {
+  .wrap { padding: 0 18px; }
+  .hero-grid, .cards-row, .duas-colunas { grid-template-columns: 1fr; }
+  .hero-titulo, .aviso-titulo { font-size: 40px; }
+  nav.menu { flex-wrap: nowrap; }
+  .hero-video iframe { height: 220px; }
+}
+@media (max-width: 640px) {
+  .wrap { padding: 0 14px; }
+  .hero-titulo, .aviso-titulo { font-size: 34px; }
+}
