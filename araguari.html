@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <title>Somente Crer</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -113,10 +116,25 @@
 
   <section class="secao duas-colunas" id="participacao">
     <div class="card">
-      <h2 class="secao-titulo">Participação</h2>
-      <p style="font:500 15px 'Outfit';color:var(--texto-secundario)">
-        Envie sua participação, pedido de oração ou testemunho — em breve com formulário completo aqui.
-      </p>
+      <h2 class="secao-titulo" data-form-titulo>Enviar participação</h2>
+      <div class="form-pills">
+        <button class="pill ativo" data-pill="participacao">Participação</button>
+        <button class="pill" data-pill="oracao">Pedido de oração</button>
+        <button class="pill" data-pill="testemunho">Testemunho</button>
+      </div>
+      <form class="form-participacao" onsubmit="return false">
+        <div class="form-linha-dupla">
+          <input type="text" placeholder="Seu nome">
+          <input type="text" placeholder="Sua cidade">
+        </div>
+        <input type="email" placeholder="Seu e-mail">
+        <textarea rows="5" data-form-placeholder placeholder="Escreva aqui a sua participação..."></textarea>
+        <label class="form-anexo">
+          <input type="file" hidden>
+          <span data-anexo-label>+ Anexar um arquivo (imagem, áudio ou PDF)</span>
+        </label>
+        <button type="submit" class="btn-enviar" data-form-botao>Enviar participação</button>
+      </form>
     </div>
     <div class="card">
       <h2 class="secao-titulo">Nosso Templo</h2>

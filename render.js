@@ -245,6 +245,35 @@
   const elRodapeLinha = document.querySelector("[data-rodape-linha]");
   if (elRodapeLinha) elRodapeLinha.textContent = rodapeLinha();
 
+  // ---------- Abas do formulário de participação ----------
+  const textosPorAba = {
+    participacao: { titulo: "Enviar participação", placeholder: "Escreva aqui a sua participação...", botao: "Enviar participação" },
+    oracao: { titulo: "Enviar pedido de oração", placeholder: "Escreva aqui o seu pedido de oração...", botao: "Enviar pedido" },
+    testemunho: { titulo: "Compartilhar testemunho", placeholder: "Escreva aqui o seu testemunho...", botao: "Enviar testemunho" },
+  };
+  const pills = document.querySelectorAll("[data-pill]");
+  const elFormTitulo = document.querySelector("[data-form-titulo]");
+  const elFormPlaceholder = document.querySelector("[data-form-placeholder]");
+  const elFormBotao = document.querySelector("[data-form-botao]");
+  pills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      pills.forEach((p) => p.classList.remove("ativo"));
+      pill.classList.add("ativo");
+      const textos = textosPorAba[pill.dataset.pill];
+      if (elFormTitulo) elFormTitulo.textContent = textos.titulo;
+      if (elFormPlaceholder) elFormPlaceholder.placeholder = textos.placeholder;
+      if (elFormBotao) elFormBotao.textContent = textos.botao;
+    });
+  });
+
+  const inputAnexo = document.querySelector('.form-anexo input[type="file"]');
+  const labelAnexo = document.querySelector("[data-anexo-label]");
+  if (inputAnexo && labelAnexo) {
+    inputAnexo.addEventListener("change", () => {
+      labelAnexo.textContent = inputAnexo.files[0] ? inputAnexo.files[0].name : "+ Anexar um arquivo (imagem, áudio ou PDF)";
+    });
+  }
+
   // ---------- Carrossel do topo (Ao Vivo / Aviso) ----------
   const pista = document.querySelector("[data-hero-pista]");
   const dots = document.querySelectorAll("[data-hero-dot]");

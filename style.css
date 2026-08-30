@@ -238,6 +238,63 @@ footer .linha-endereco { font: 500 15px 'Outfit'; color: var(--texto-secundario)
 /* ===== Genéricos de seção ===== */
 .secao { padding: 32px 0; }
 .secao-titulo { font: 700 26px 'Outfit'; letter-spacing: -.035em; margin-bottom: 20px; }
+.texto-secundario { font: 500 15px/1.6 'Outfit'; color: var(--texto-secundario); margin-bottom: 12px; }
+.link-simples { color: var(--azul-acao); font: 700 15px 'Outfit'; text-decoration: none; }
+
+/* ===== Formulário de participação ===== */
+.form-pills { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+.pill {
+  border-radius: 999px;
+  padding: 10px 18px;
+  font: 600 14px 'Outfit';
+  cursor: pointer;
+  border: 1px solid rgba(19,110,156,.4);
+  background: transparent;
+  color: var(--azul-acao);
+  transition: background .15s, color .15s;
+}
+.pill.ativo { background: var(--azul-acao); color: var(--branco); border-color: var(--azul-acao); }
+
+.form-participacao { display: flex; flex-direction: column; gap: 14px; }
+.form-linha-dupla { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.form-participacao input[type="text"],
+.form-participacao input[type="email"],
+.form-participacao textarea {
+  border: 1px solid var(--borda-input);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font: 500 15px 'Outfit';
+  color: var(--azul-tinta);
+  background: var(--branco);
+  width: 100%;
+  resize: vertical;
+}
+.form-participacao input::placeholder,
+.form-participacao textarea::placeholder { color: rgba(15,61,86,.45); }
+
+.form-anexo {
+  border: 1px dashed var(--borda-input);
+  border-radius: 8px;
+  padding: 14px;
+  text-align: center;
+  font: 500 14px 'Outfit';
+  color: var(--texto-secundario);
+  cursor: pointer;
+  display: block;
+}
+
+.btn-enviar {
+  background: var(--azul-acao);
+  color: var(--branco);
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font: 700 15px 'Outfit';
+  cursor: pointer;
+  transition: background .15s;
+  align-self: flex-start;
+}
+.btn-enviar:hover { background: var(--azul-acao-escuro); }
 
 @media (max-width: 1100px) {
   .wrap { padding: 0 18px; }
